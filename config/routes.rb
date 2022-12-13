@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
-  get 'post_comments/create'
-  get 'post_comments/destroy'
-  get 'posts/show'
-  get 'posts/index'
-  get 'posts/create'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
-  get 'users/show'
-  get 'users/index'
-  get 'users/edit'
-  get 'users/update'
+  root to: "homes#top"
+  get "homes/about"=>"homes#about", as: 'about'
+
   devise_for :users
+
+  resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
+    resources :posts_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
+
+  resources :users, only: [:index, :show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

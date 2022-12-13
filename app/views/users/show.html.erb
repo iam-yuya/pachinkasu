@@ -1,2 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'info', user: @user %>
+      <h2 class="mt-3">New post</h2>
+      <%= render 'posts/form', post: @post %>
+    </div>
+
+    <div class='col-md-8 offset-md-1'>
+      <h2>Posts</h2>
+      <%= render 'posts/index', posts: @posts %>
+    </div>
+
+
+    </div>
+  </div>
+</div>
