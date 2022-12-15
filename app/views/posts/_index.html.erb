@@ -10,7 +10,7 @@
 
   <tbody>
     <% posts.each do |post| %>
-      <tr>
+      <tr id="post_<%= post.id %>">
         <td>
           <%= link_to user_path(post.user) do %>
             <%= image_tag post.user.get_profile_image, size:'50x50' %>
@@ -18,6 +18,13 @@
         </td>
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= post.body %></td>
+
+        <!--いいね部分-->
+        <td id="favorite_buttons_<%= post.id %>">
+          <%= render "favorites/favorite-btn", post: post %>
+        </td>
+
+
       </tr>
     <% end %>
   </tbody>

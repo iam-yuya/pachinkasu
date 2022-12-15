@@ -1,24 +1,29 @@
-# README
+# Pachinkasu
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+パチンコ・パチスロユーザーが気軽に交流できるSNSです。
 
-Things you may want to cover:
+### テーマを選んだ理由
+自身が元々パチンコ・パチスロユーザーであり、自身の体験をSNSで共有するのが好きだったため。
+また規制緩和により新たな基準の遊技台が登場してきたので、ユーザー間で情報共有ができるサービスが欲しいと考えたから。
 
-* Ruby version
+### ターゲットユーザ
+パチンコ・パチスロユーザー
 
-* System dependencies
+### 主な利用シーン
+パチンコ・パチスロユーザーの体験の共有、傷の舐め合い、気になる台やお店の情報集めなど、幅広くお使いいただけます。
 
-* Configuration
+## 設計書
 
-* Database creation
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。

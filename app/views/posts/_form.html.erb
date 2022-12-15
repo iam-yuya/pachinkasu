@@ -1,4 +1,5 @@
-<%= form_with model:post, url: posts_path , local:true do |f| %>
+<%= form_with model:post, local:true do |f| %>
+<%= render 'layouts/errors', obj: f.object %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control post_title' %>
