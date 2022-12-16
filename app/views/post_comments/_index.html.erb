@@ -3,13 +3,13 @@
   <tr>
     <td>
       <%= link_to user_path(post_comment.user), class: "user_#{post_comment_user.id}" do %>
-        <% image_tag post_comment.user.get_profile_image, size:"100x100" %></br>
+        <%= image_tag post_comment.user.get_profile_image, size:"80x80" %></br>
         <%= post_comment.user.name %>
       <% end %>
     </td>
     <td><%= post_comment.comment %></td>
     <% if post_comment.user == current_user %>
-      <td><%= link_to "Destroy", post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn btn-danger' %></td>
+      <td><%= link_to "Destroy", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %></td>
     <% end %>
   </tr>
 <% end %>

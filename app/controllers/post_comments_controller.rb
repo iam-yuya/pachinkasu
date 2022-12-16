@@ -16,10 +16,10 @@ class PostCommentsController < ApplicationController
     post_comment = @post.post_comments.find(params[:id])
     post_comment.destroy
   end
-  
-  
+
+
   private
-  
+
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end

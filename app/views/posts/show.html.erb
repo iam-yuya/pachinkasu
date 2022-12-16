@@ -34,13 +34,8 @@
         <%= render 'post_comments/index', post: @post %>
       </table>
       <!--コメントフォーム-->
-      <div class="new-comment">
-        <%= form_with model: [@post, @post_comment], local: false do |f| %>
-          <%= render 'layouts/errors', obj: @post_comment %>
-          <%= f.text_area :comment, rows: '5', placeholder: " コメントを入力", class: "w-100" %>
-          <%= f.submit "Post Comment" %>
-        <% end %>
-      </div>
+      <%= render 'post_comments/form', post: @post, post_comment: @post_comment %>
+
     </div>
   </div>
 </div>
