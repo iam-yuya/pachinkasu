@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @post_new = Post.new
+    @post_comment = PostComment.new
   end
 
 
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "you hace update post successfully."
+      redirect_to post_path(@post), notice: "You have updated post successfully."
     else
       render 'edit'
     end

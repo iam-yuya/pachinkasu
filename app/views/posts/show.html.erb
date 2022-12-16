@@ -19,19 +19,28 @@
           </td>
           <td><%= link_to @post.title, post_path(@post) %></td>
           <td><%= @post.body %></td>
-
           <!--いいね機能-->
           <td id="favorite_buttons_<%= @post.id %>">
             <%= render "favorites/favorite-btn", post: @post %>
           </td>
-
           <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
-
+      <!--コメント一覧-->
+      <table class="post_comments">
+        <%= render 'post_comments/index', post: @post %>
+      </table>
+      <!--コメントフォーム-->
+      <div class="new-comment">
+        <%= form_with model: [@post, @post_comment], local: false do |f| %>
+          <%= render 'layouts/errors', obj: @post_comment %>
+          <%= f.text_area :comment, rows: '5', placeholder: " コメントを入力", class: "w-100" %>
+          <%= f.submit "Post Comment" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
