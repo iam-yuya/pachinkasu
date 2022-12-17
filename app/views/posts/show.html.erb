@@ -34,8 +34,9 @@
         <%= render 'post_comments/index', post: @post %>
       </table>
       <!--コメントフォーム-->
-      <%= render 'post_comments/form', post: @post, post_comment: @post_comment %>
-
+      <div id="comments_area">
+        <%= render 'post_comments/form', post: @post, post_comment: @post_comment %>
+      </div>
     </div>
   </div>
 </div>

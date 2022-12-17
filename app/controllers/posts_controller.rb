@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id), notice: "You have created post successfully."
     else
-      @post = Post.all
+      @posts = Post.all
       render 'index'
     end
   end

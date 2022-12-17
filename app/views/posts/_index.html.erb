@@ -18,13 +18,17 @@
         </td>
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= post.body %></td>
-
         <!--いいね部分-->
         <td id="favorite_buttons_<%= post.id %>">
           <%= render "favorites/favorite-btn", post: post %>
         </td>
-
-
+        <!--コメント数表示-->
+        <td>
+          <%= link_to post_path(post.id) do %>
+            <i class="fas fa-comments"></i>
+            <%= post.post_comments.count %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
