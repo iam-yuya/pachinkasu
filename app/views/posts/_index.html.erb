@@ -4,6 +4,7 @@
       <th></th>
       <th>Title</th>
       <th>Content</th>
+      <th>Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,11 +14,19 @@
       <tr id="post_<%= post.id %>">
         <td>
           <%= link_to user_path(post.user) do %>
-            <%= image_tag post.user.get_profile_image, size:'50x50' %>
+            <%= image_tag post.user.get_profile_image, size:'100x100', class: 'img-thumbnail' %></br>
+            <i class="fas fa-user"></i> <%= post.user.name %>
           <% end %>
         </td>
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= post.body %></td>
+        <td>
+          <% if post.image.attached? %>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.image, size:'100x100' %>
+            <% end %>
+          <% end %>
+        </td>
         <!--いいね部分-->
         <td id="favorite_buttons_<%= post.id %>">
           <%= render "favorites/favorite-btn", post: post %>

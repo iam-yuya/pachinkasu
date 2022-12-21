@@ -9,8 +9,8 @@
   <tr>
     <td>
       <%= link_to user_path(post_comment.user), class: "user_#{post_comment_user.id}" do %>
-        <%= image_tag post_comment.user.get_profile_image, size:"80x80" %></br>
-        <%= post_comment.user.name %>
+        <%= image_tag post_comment.user.get_profile_image, size:"80x80", class: 'img-thumbnail' %></br>
+        <i class="fas fa-user"></i> <%= post_comment.user.name %>
       <% end %>
     </td>
     <td><%= post_comment.comment %></td>

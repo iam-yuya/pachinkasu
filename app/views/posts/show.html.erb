@@ -13,8 +13,8 @@
   		  <tr id="post_<%= @post.id %>">
           <td>
             <%= link_to user_path(@post.user) do %>
-              <%= image_tag @post.user.get_profile_image, size:"100x100" %><br>
-              <%= @post.user.name %>
+              <%= image_tag @post.user.get_profile_image, size:"100x100", class: 'img-thumbnail' %><br>
+              <i class="fas fa-user"></i> <%= @post.user.name %>
             <% end %>
           </td>
           <td><%= link_to @post.title, post_path(@post) %></td>
@@ -29,6 +29,14 @@
           <% end %>
         </tr>
       </table>
+      <!--投稿画像-->
+      <div class="mb-3 px-3">
+        <% if @post.image.attached? %>
+          <%= link_to post_path(@post.id) do %>
+            <%= image_tag @post.image, size:'500x400', class: 'w-100' %>
+          <% end %>
+        <% end %>
+      </div>
       <!--コメント一覧-->
       <table class="post_comments table">
         <%= render 'post_comments/index', post: @post %>
