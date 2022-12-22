@@ -3,6 +3,6 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Editing Post</h1>
   		<%= render 'form', post: @post %>
-  		<%= link_to 'Back', posts_path, class: "back" %>
+  		<%= link_to 'Back', post_path(@post), class: "back" %>
   </div>
 </div>
