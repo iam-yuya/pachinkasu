@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_nomal_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -37,6 +38,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
+    end
+  end
+  
+  def ensure_nomal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to request.referer, notice: 'ゲストユーザーの更新・削除はできません。'
     end
   end
 
