@@ -10,14 +10,12 @@
   </tr>
 </table>
 
-<% if user.name != "guestuser" %>
 <div class='row'>
-<% if user == current_user %>
+<% if user == current_user && user.name != "guestuser" %>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
 <% end %>
 </div>
-<% end %>
 
 
