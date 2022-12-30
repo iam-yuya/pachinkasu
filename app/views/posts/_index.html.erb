@@ -4,7 +4,6 @@
       <th></th>
       <th>Title</th>
       <th>Content</th>
-      <th>Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +22,7 @@
         <td>
           <% if post.image.attached? %>
             <%= link_to post_path(post.id) do %>
-              <%= image_tag post.image, size:'150x150' %>
+              <%= image_tag post.image, size:'140x140' %>
             <% end %>
           <% end %>
         </td>
@@ -33,9 +32,14 @@
         </td>
         <!--コメント数表示-->
         <td>
-          <%= link_to post_path(post.id) do %>
-            <i class="fas fa-comments"></i>
-            <%= post.post_comments.count %>
+          <% unless post.post_comments.count == 0 %>
+            <%= link_to post_path(post.id) do %>
+              <i class="fas fa-comments"></i><%= post.post_comments.count %>
+            <% end %>
+          <% else %>
+            <%= link_to post_path(post.id) do %>
+              <i class="far fa-comments"></i> 0
+            <% end %>
           <% end %>
         </td>
       </tr>
