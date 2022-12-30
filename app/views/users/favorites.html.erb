@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <h2>いいね一覧</h2>
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Content</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @favorite_posts.each do |post| %>
+          <tr id="post_<%= post.id %>">
+            <td>
+              <%= link_to user_path(post.user) do %>
+                <%= image_tag post.user.get_profile_image, size:'100x100', class: 'img-thumbnail' %></br>
+                <i class="fas fa-user"></i> <%= post.user.name %>
+              <% end %>
+            </td>
+            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td><%= post.body %></td>
+            <td>
+              <% if post.image.attached? %>
+                <%= link_to post_path(post.id) do %>
+                  <%= image_tag post.image, size:'140x140' %>
+                <% end %>
+              <% end %>
+            </td>
+            <!--いいね部分-->
+            <td id="favorite_buttons_<%= post.id %>">
+              <%= render "favorites/favorite-btn", post: post %>
+            </td>
+            <!--コメント数表示-->
+            <td>
+              <% unless post.post_comments.count == 0 %>
+                <%= link_to post_path(post.id) do %>
+                  <i class="fas fa-comments"></i><%= post.post_comments.count %>
+                <% end %>
+              <% else %>
+                <%= link_to post_path(post.id) do %>
+                  <i class="far fa-comments"></i> 0
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
