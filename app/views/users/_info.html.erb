@@ -8,6 +8,24 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <!--フォロー数-->
+  <tr>
+    <th>follows</th>
+    <th>
+      <%= link_to user_followings_path(user) do %>
+        <%= user.followings.count %>
+      <% end %>
+    </th>
+  </tr>
+  <!--フォロワー数-->
+  <tr>
+    <th>followers</th>
+    <th>
+      <%= link_to user_followers_path(user) do %>
+        <%= user.followers.count %>
+      <% end %>
+    </th>
+  </tr>
 </table>
 
   <div>
