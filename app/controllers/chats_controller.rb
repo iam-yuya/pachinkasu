@@ -11,14 +11,19 @@ class ChatsController < ApplicationController
     else
       @room = Room.new
       @room.save
-      UserRoom.create(user_id: current_user.id, room_id: @room.id)
+      # 自分と相手の中間テーブルを作成
+      UserRoom.create(user_id: current_user.id, room_id: @room.id) #create()はnewとsaveを同時にできる
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
+    @chats = @room.chats
+    @chat = Chat.new(room_id: @room.id)
   end
 
   def create
     @chat = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+    # @chat = Chat.new(chat_params)
+    # chat.user_id = current_user.idの略
+    render :validater unless @chat.save #新規投稿が保存されなかった場合validater.js.erbを探す。保存された場合はcreate.js.erbを探す
   end
 
 
