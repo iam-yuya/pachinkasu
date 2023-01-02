@@ -31,7 +31,7 @@
 <div class="row">
   <div>
     <% if user == current_user && user.name != "guestuser" %>
-      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block ml-4" do %>
         <i class="fas fa-user-cog"></i>
       <% end %>
     <% else %>
