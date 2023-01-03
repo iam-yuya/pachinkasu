@@ -7,6 +7,7 @@
       <%= render 'form', post: @post %>
     </div>
     <div class='col-md-8 offset-md-1'>
+      <!--検索フォーム-->
       <%= render 'search', q: @q, url: posts_path %>
       <h2>Posts</h2>
       <%= render 'index', posts: @posts %>

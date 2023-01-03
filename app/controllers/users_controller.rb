@@ -10,8 +10,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
     @post = Post.new
+    # 検索用の記述
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).includes(:posts).page(params[:page]).order("created_at desc")
   end
 
   def edit
