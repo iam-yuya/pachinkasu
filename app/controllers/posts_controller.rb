@@ -4,7 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    # 検索用の記述
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
   end
 
   def create
